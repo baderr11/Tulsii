@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tolsi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #74CCCD, #aaa0ca);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .header {
+            color: #808080;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .main-image {
+            width: 200px; /* Increased image size */
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .main-text {
+            font-size: 10px;
+            margin-bottom: 100px;
+            font-weight: bold;
+        }
+ 
+        .footer {
+            color: #808080;
+            font-size: 12px;
+        }
+        a {
+            font-style: normal;
+            text-decoration: blink;
+        }
+
+        a:visited {
+            color: #000;
+        }
+
+        .container {
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 400px;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        p {
+            font-size: 1.2em;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- <div class="header">English</div> -->
+    <img src="ma/2.png" alt="Relaxation Symbol" class="main-image">
+
+    <div class="container">
+        <h1 class="title">مرحبا بك في تولسي؛ رفيقك في رحلتك</h1>
+        <h1 class="title">نحو السلام والاتزان النفسي</h1>
+        <br>
+        <p class="subtitle">.تولسي هي منصة للعافية النفسية تساعد على تحسين النوم وتخفيف التوتر وتعزيز السعادة والأنتاجية</p>
+        <br>
+        <p class="subtitle">نقترح عليك في البداية أتباع أحد المسارات الموجهة, ثم الاستماع الى محتوى تولسي مثل التأملات وقصص النوم وغيرها.</p>
+        <br>
+        <p class="subtitle">أفضل وقت لاستخدام تطبيق تولسي هو في بداية اليوم لمدة 10 دقائق يوميا أو في المساء قبل النوم.</p>
+        <br>
+        <br>
+        </div>
+        <div class="timer">00:00</div>
+        <a href="home1.html" class="resend-option"></a>
+    </main>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputs = document.querySelectorAll('.input-fields input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                if (input.value.length === 1) {
+                    if (index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                }
+            });
+        });
+
+        // Countdown Timer
+        let timerElement = document.querySelector('.timer');
+        let seconds = 15;
+        let timerInterval = setInterval(() => {
+            seconds--;
+            let minutes = Math.floor(seconds / 15);
+            let remainingSeconds = seconds % 15;
+            timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+
+            if (seconds <= 0) {
+                clearInterval(timerInterval);
+                document.querySelector('.resend-option').style.color = 'white';
+
+                // Redirect to the specified page
+                window.location.href = "home1.html"; // Replace "home1.html" with your desired URL
+            }
+        }, 1000);
+    });
+</script>
+
+</body>
+</html> 

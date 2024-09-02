@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tulsi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .header {
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        a:link, a:visited, a:hover, a:active {
+            text-decoration: none;
+        }
+        .hero {
+            position: relative;
+            height: 60vh;
+            background: linear-gradient(to bottom, #e4efff 0%, #ffffff 100%);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+        .hero img {
+            position: absolute;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        .hero .shadow-effect {
+            position: absolute;
+            bottom: 0;
+            height: 40%;
+            width: 100%;
+            background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+            z-index: 2;
+        }
+        .hero .container {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            padding-bottom: 50px;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4ecdca;
+        }
+        .hero .lead {
+            color: white;
+        }
+        .btn-primary {
+            background-color: #4ecdc4;
+            border-color: #4ecdc4;
+            
+        }
+        .btn-primary:hover {
+            background-color: #45b7aa;
+            border-color: #45b7aa;
+        }
+        .section-title {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .footer {
+            background-color: white;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+        }
+        .footer i {
+            font-size: 1.5rem;
+            color: #4ecdc4;
+        }
+        .footer i:hover {
+            color: #45b7aa;
+        }
+        main {
+            padding-bottom: 80px;
+        }
+        .card-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 10px;
+            padding-right: 30px;
+        }
+        .card-slider .card {
+            min-width: 250px;
+            margin-right: 15px;
+            margin-top: 15px;
+            scroll-snap-align: start;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+            background-color: #fff;
+            position: relative;
+            overflow: visible;
+        }
+        .card-slider .badge {
+            background-color: #4ecdc4;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            position: absolute;
+            z-index: 1;
+        }
+        .card-slider .badge-free {
+            top: -10px;
+            left: 10px;
+        }
+        .card-slider .badge-active {
+            top: -10px;
+            right: 10px;
+            background-color: #e0f7f5;
+            color: #4ecdc4;
+        }
+        .progress-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 5px solid #e0f7f5;
+            border-top-color: #4ecdc4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #4ecdc4;
+            position: absolute;
+            right: 0px;
+            top: 40%;
+            transform: translateY(-50%);
+            background-color: white;
+        }
+        .btn-listen {
+            background-color: #4ecdc4;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            margin-top: 15px;
+            width: 100%;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+        .card-content {
+            padding-right: 50px;
+        }
+        .card-background-slider .card {
+            background-size: cover;
+            background-position: center;
+            color: white;
+            min-height: 200px;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .card-background-slider .card h5 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+        }
+        .card-background-slider .card p {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            margin-bottom: 0;
+            opacity: 0.8;
+        }
+        .card-photo-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 10px;
+            padding-right: 0;
+            gap: 10px;
+        }
+        .card-photo-slider .card {
+            background: none;
+            border: none;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            flex: 0 0 auto;
+        }
+        .card-photo-slider img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 5px;
+            border: 4px solid #4ecdc4;
+        }
+        .card-photo-slider h5 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        .card-size {
+            min-width: "100px";
+        }        
+        .option {
+            background: rgb(9 9 9 / 0%);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s ease;
+        }
+
+        .option-text {
+            color: #000000;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a0a0a;
+            margin-left: 10px;
+            width: 1300;
+        }
+        
+        .card2 {
+            background-color: #ddd;
+            border-radius: 10px;
+            box-shadow: 0 20px 5px rgba(0,0,0,0.1);
+            margin: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        .card-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .card-body {
+            font-size: 16px;
+            color: #ffffff;
+            padding: 10px;
+        }
+
+        .btn-listen {
+            background-color: #4ecdc4;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            margin-top: 15px;
+            width: 100%;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="hero">
+            <img src="../Good/ma/home.jpeg" alt="Hero Image">
+            <div class="shadow-effect"></div>
+            <div class="container">
+                <h1>تعزيز الطاقة والإنتاجية</h1>
+                <p class="lead">الاسترخاء 70 دقائق</p>
+                <a href="ww.html?audio=mi/11.m4a&image=ma/collar.jpg"> <button class="btn btn-primary btn-lg">
+                    <i class="fas fa-play me-2"></i>استمعي الان
+                </button></a>
+            </div>
+        </section>
+        <section class="container mt-4">
+            <div class="row">
+                <div class="col-4">
+                    <button class="btn btn-primary w-100">
+                        <i class="far fa-smile me-2"></i>كيف تشعرين
+                    </button>
+                </div>
+                <div class="col-4">
+                    <a href="note.html"><button class="btn btn-primary w-100">
+                        <i class="fas fa-pen me-2"></i>التدوين
+                    </button></a>
+                </div>
+                <div class="col-4">
+                   <a href="5  222 - Copy.html"><button class="btn btn-primary w-100">
+                        <i class="far fa-clock me-2"></i>التذكيرات
+                    </button></a>
+                </div>
+            </div>
+        </section>
+        <section class="container mt-4">
+            <div class="option">
+                <span class="option-text">المسارات</span>
+                <a href="Tuo/Tulsi5.html"><span class="icon">الكل</span></a>
+            </div>
+            <div class="card-slider">
+                <div class="card">
+                    <span class="badge badge-free">مجانا</span>
+                    <span class="badge badge-active">فعال</span>
+                    <div class="card-content">
+                        <h5>اليوم 1 من 14</h5>
+                        <p>مسارات اللياقة البدنية</p>
+                    </div>
+                    <div class="progress-circle">6%</div>
+                    <button class="btn-listen">استمع الآن</button>
+                </div>
+                <div class="card">
+                    <span class="badge badge-free">مجانا</span>
+                    <span class="badge badge-active">فعال</span>
+                    <div class="card-content">
+                        <h5>اليوم 2 من 14</h5>
+                        <p>مسارات النظام الغدائي</p>
+                    </div>
+                    <div class="progress-circle">12%</div>
+                    <button class="btn-listen">استمع الآن</button>
+                </div>
+                <div class="card">
+                    <span class="badge badge-free">مجانا</span>
+                    <span class="badge badge-active">فعال</span>
+                    <div class="card-content">
+                        <h5>اليوم 3 من 14</h5>
+                        <p>مسارات المشروبات</p>
+                    </div>
+                    <div class="progress-circle">0%</div>
+                    <button class="btn-listen">استمع الآن</button>
+                </div>
+                <div class="card">
+                    <span class="badge badge-free">مجانا</span>
+                    <span class="badge badge-active">فعال</span>
+                    <div class="card-content">
+                        <h5>اليوم 4 من 14</h5>
+                        <p>مسارات تخفيف التوتر</p>
+                    </div>
+                    <div class="progress-circle">0%</div>
+                    <button class="btn-listen">استمع الآن</button>
+                </div>
+                <div class="card">
+                    <span class="badge badge-free">مجانا</span>
+                    <span class="badge badge-active">فعال</span>
+                    <div class="card-content">
+                        <h5>اليوم 5 من 14</h5>
+                        <p>مسار وتحسين النوم</p>
+                    </div>
+                    <div class="progress-circle">0%</div>
+                    <button class="btn-listen">استمع الآن</button>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <div class="card2" style="background-image: url('ma/mm.jpeg');">
+                <div class="card-header">مسار الصحه البدنية</div>
+                <div class="card-body">تعالو نتعرف عليها ونعرف كل ما يخصها</div>
+                <a href="Tuo/‏‏Tulsi6.html"> <button class="btn btn-primary btn-lg">
+                    <i class="fas fa-play me-2"></i>استمعي الان
+                </button></a>
+            </div>
+        </section>
+
+        <section class="container mt-4">
+            
+            <div class="option">
+                <span class="option-text">مسارات اللياقة البدنية</span>
+                <a href="Tuo/Tulsi.html"><span class="icon">الكل</span></a>
+            </div>
+            <div class="card-slider card-background-slider">
+                <a href="ww.html?audio=mi/11.m4a&image=ma/collar.jpg">
+                <div class="card" style="background-image: url('ma/collar.jpg');">
+                    <h5>ركوب الدراجات</h5>
+                    <p>أعدي شحن طاقتك</p>
+                </div>
+                </a>
+                <a href="ww.html?audio=mi/22.mp3&image=ma/collar2.jpg">
+                <div class="card" style="background-image: url('ma/collar2.jpg');" >
+                    
+                    <h5 >السباحة</h5>
+                    <p> أعدي شحن طاقتك</p>
+                </div>
+                </a>
+                <a href="ww.html?audio=mi/33.m4a&image=ma/collar3.jpg">
+                <div class="card" style="background-image: url('ma/collar3.jpg');">
+                    <h5>الركض</h5>
+                    <p>أعدي شحن طاقتك</p>
+                </div>
+                 </a>
+                 <a href="ww.html?audio=mi/44.mp3&image=ma/collar1.jpg">
+                 <div class="card" style="background-image: url('ma/collar1.jpg');">
+                     <h5>كرة التنس</h5>
+                     <p>أعدي شحن طاقتك</p>
+                 </div>
+                  </a>
+                  <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                  <div class="card" style="background-image: url('ma/collar4.jpg');">
+                      <h5>اليوغا</h5>
+                      <p>أعدي شحن طاقتك</p>
+                  </div>
+                   </a>
+            </div>
+        </section>
+
+            <section class="container mt-4">
+            
+            <div class="option">
+                <span class="option-text">مسارات النظام الغدائي</span>
+                <a href="Tuo/Tulsi1.html"><span class="icon">الكل</span></a>
+            </div>
+            <div class="card-slider card-background-slider">
+                <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                <div class="card" style="background-image: url('ma/food.webp');">
+                    <h5>التوت الازرق</h5>
+                    <p>أعدي شحن طاقتك</p>
+                </div>
+                </a>
+                <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                <div class="card" style="background-image: url('ma/food1.jpg');" >
+                    
+                    <h5 >المشمش</h5>
+                    <p>تعرفي على السلام الداخلي</p>
+                </div>
+                </a>
+                <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                <div class="card" style="background-image: url('ma/food2.jpg');">
+                    <h5>التفاح</h5>
+                    <p>تعزيز التفكير الإيجابي</p>
+                </div>
+                 </a>
+                 <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                 <div class="card" style="background-image: url('ma/food3.webp');">
+                     <h5>الجزر</h5>
+                     <p>تعزيز التفكير الإيجابي</p>
+                 </div>
+                  </a>
+                  
+            
+                  </a>
+                  <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                  <div class="card" style="background-image: url('ma/food4.jpeg');">
+                      <h5>التمر</h5>
+                      <p>تعزيز التفكير الإيجابي</p>
+                  </div>
+                   </a>
+                </div>
+             </div>
+        </section>
+        <section class="container mt-4">
+            
+            <div class="option">
+                <span class="option-text">مسارات المشروبات</span>
+                <a href="Tuo/Tulsi2.html"><span class="icon">الكل</span></a>
+            </div>
+            <div class="card-slider card-background-slider">
+                <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                <div class="card" style="background-image: url('ma/drink.webp');">
+                    <h5>يانسون</h5>
+                    <p>أعدي شحن طاقتك</p>
+                </div>
+                </a>
+                <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                <div class="card" style="background-image: url('ma/drink1.webp');" >
+                    
+                    <h5 >شاي أخضر</h5>
+                    <p>تعرفي على السلام الداخلي</p>
+                </div>
+                </a>
+                <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                <div class="card" style="background-image: url('ma/drink2.jpg');">
+                    <h5>كركدية</h5>
+                    <p>تعزيز التفكير الإيجابي</p>
+                </div>
+                 </a>
+                 <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                 <div class="card" style="background-image: url('ma/drink3.jpg');">
+                     <h5>نعناع</h5>
+                     <p>تعزيز التفكير الإيجابي</p>
+                 </div>
+                  </a>
+                  <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                  <div class="card" style="background-image: url('ma/drink4.jpg');">
+                      <h5>شمر</h5>
+                      <p>تعزيز التفكير الإيجابي</p>
+                  </div>
+                   </a>
+            </div>
+        </section>
+                <section class="container mt-4">
+            
+            <div class="option">
+                <span class="option-text">مسارات تخفيف التوتر</span>
+                <a href="Tuo/Tulsi3.html"><span class="icon">الكل</span></a>
+            </div>
+            <div class="card-slider card-background-slider">
+                <a href="ww.html?audio=mi/55.m4a&image=ma/mos.jpg">
+                <div class="card" style="background-image: url('ma/mos.jpg');">
+                    <h5>الاستماع للموسيقى</h5>
+                    <p>أعدي شحن طاقتك</p>
+                </div>
+                </a>
+                <a href="ww.html?audio=mi/55.m4a&image=ma/rsm.jpg">
+                <div class="card" style="background-image: url('ma/rsm.jpg');" >
+                    
+                    <h5 >الرسم</h5>
+                    <p>تعرفي على السلام الداخلي</p>
+                </div>
+                </a>
+                <a href="ww.html?audio=mi/55.m4a&image=ma/rdn.jpg">
+                <div class="card" style="background-image: url('ma/rdn.jpg');">
+                    <h5>قراءه كتاب</h5>
+                    <p>تعزيز التفكير الإيجابي</p>
+                </div>
+                 </a>
+                 <a href="ww.html?audio=mi/55.m4a&image=ma/rdn1.jpg">
+                 <div class="card" style="background-image: url('ma/rdn1.jpg');">
+                     <h5>قراءه القران الكريم</h5>
+                     <p>تعزيز التفكير الإيجابي</p>
+                 </div>
+                  </a>
+                  <a href="ww.html?audio=mi/55.m4a&image=ma/rdn2.jpg">
+                  <div class="card" style="background-image: url('ma/rdn2.jpg');">
+                      <h5>نوم</h5>
+                      <p>تعزيز التفكير الإيجابي</p>
+                  </div>
+                   </a>
+            </div>
+        </section>
+        <section class="container mt-4">
+            
+            <div class="option">
+                <span class="option-text">مسارات تحسين النوم</span>
+                <a href="Tuo/Tulsi4.html"><span class="icon">الكل</span></a>
+            </div>
+            <div class="card-slider card-background-slider">
+                <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                <div class="card" style="background-image: url('ma/home 1.jpeg');">
+                    <h5>الالتزام بجدول للنوم</h5>
+                    <p>أعدي شحن طاقتك</p>
+                </div>
+                </a>
+                <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                <div class="card" style="background-image: url('ma/home 2.jpeg');" >
+                    
+                    <h5 >الانتباه لطعامك وشرابك </h5>
+                    <p>تعرفي على السلام الداخلي</p>
+                </div>
+                </a>
+                <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                <div class="card" style="background-image: url('ma/home 3.jpg');">
+                    <h5>هيئ لنسك بيئة مريحة</h5>
+                    <p>تعزيز التفكير الإيجابي</p>
+                </div>
+                 </a>
+                 <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                 <div class="card" style="background-image: url('ma/home 4.jpg');">
+                     <h5>قلل وقت القيلولة خلال النهار</h5>
+                     <p>تعزيز التفكير الإيجابي</p>
+                 </div>
+                  </a>
+                  <a href="ww.html?audio=mi/55.m4a&image=ma/collar4.jpg">
+                  <div class="card" style="background-image: url('ma/home 5.jpg');">
+                      <h5>تضمين  الأنشطة البدنية في عاداتك اليومية</h5>
+                      <p>تعزيز التفكير الإيجابي</p>
+                  </div>
+                   </a>
+            </div>
+        </section>
+
+        <section>
+            <div class="card2" style="background-image: url('ma/mm.jpeg');">
+                <div class="card-header">مسار الصحه النفسية</div>
+                <div class="card-body">تعالو نتعرف عليها ونعرف كل ما يخصها</div>
+                <a href="Tuo/‏‏Tulsi7.html"> <button class="btn btn-primary btn-lg">
+                    <i class="fas fa-play me-2"></i>استمعي الان
+                </button></a>
+            </div>
+        </section>
+
+        <section class="container mt-4">
+            
+            <div class="option">
+                <span class="option-text">الأطباء المتميزون</span>
+                <a href="111 - Copy.html"><span class="icon">الكل</span></a>
+            </div>
+            <div class="card-slider card-photo-slider">
+                <div class="card card-size" style="min-width: 100px;">
+                    <img src="../Good/ma/m1.jpg" alt="Doctor Image">
+                    <h5>د. أحمد الشمري</h5>
+                </div>
+                <div class="card card-size" style="min-width: 100px;">
+                    <img src="../Good/ma/m1.jpg" alt="Doctor Image">
+                    <h5>د. ليلى الحسني</h5>
+                </div>
+                <div class="card card-size" style="min-width: 100px;">
+                    <img src="../Good/ma/m1.jpg" alt="Doctor Image">
+                    <h5>د. محمد البقمي</h5>
+                </div>
+                <div class="card card-size" style="min-width: 100px;">
+                    <img src="../Good/ma/m1.jpg" alt="Doctor Image">
+                    <h5>د. سارة العتيبي</h5>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <i class="fas fa-home"></i>
+        <i class="far fa-heart"></i>
+        <a href="try person account.html"><i class="far fa-user"></i></a>
+        <i class="far fa-comment"></i>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

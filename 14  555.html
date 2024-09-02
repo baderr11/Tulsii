@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tolsi</title>
+    <style>
+        body {
+            
+            background: linear-gradient(to bottom, #74CCCD, #aaa0ca);
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;  
+
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        header {
+            text-align: right;
+            padding: 10px;
+        }
+
+        .arrow-icon {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        .input-fields {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .input-fields input {
+            width: 50px;
+            height: 50px;
+            margin: 0 5px;
+            border: 2px solid lightgray;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .timer {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .resend-option {
+            font-size: 14px;
+            color: dark;
+            text-decoration: none;
+        }
+
+        .resend-option:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="9 444.html" class="arrow-icon">→</a>
+        </header>
+        <main>
+            <h1>تأكيد رقم الجوال</h1>
+            <p>تم إرسال رقم التفعيل إلى جوالك. الرجاء إدخاله في المربع أدناه</p>
+            <div class="input-fields">
+                <input type="text" maxlength="1" id="input1">
+                <input type="text" maxlength="1" id="input2">
+                <input type="text" maxlength="1" id="input3">
+                <input type="text" maxlength="1" id="input4">
+            </div>
+            <div class="timer">00:00</div>
+            <a href="12  888.html" class="resend-option">لم يصلك الرمز؟ إعادة الإرسال</a>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.input-fields input');
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', function() {
+                    if (input.value.length === 1) {
+                        if (index < inputs.length - 1) {
+                            inputs[index + 1].focus();
+                        }
+                    }
+                });
+            });
+
+            // Countdown Timer
+            let timerElement = document.querySelector('.timer');
+            let seconds = 60;
+            let timerInterval = setInterval(() => {
+                seconds--;
+                let minutes = Math.floor(seconds / 60);
+                let remainingSeconds = seconds % 60;
+                timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+
+                if (seconds <= 0) {
+                    clearInterval(timerInterval);
+                    document.querySelector('.resend-option').style.color = 'white';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tolsi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, lightblue, lightpurple);
+            background: linear-gradient(to bottom,  #74CCCD, #aaa0ca);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .gender-button {
+            background-color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: 0px solid grey;
+            border-radius: 50%;
+            width: 170px;
+            height: 170px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .gender-button:hover {
+            border-color: darkgrey;
+        }
+
+        .gender-button.selected {
+            border-color: #00C9FF;
+            
+            background: #fff;
+        }
+
+        .gender-button span {
+            font-size: 2em;
+        }
+
+        .gender-button label {
+            font-size: 1em;
+        }
+
+        .continue-button {
+            background-color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 100px;
+            cursor: pointer;
+            opacity: 0.5;
+            pointer-events: none;
+            border-radius: 25px;
+            width: 300px;
+        }
+
+        .continue-button.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="main-text">هلا بك - عرفينا بك أكثر </h1>
+        <p>كيف تحب نناديك؟</p>
+    </header>
+    <div class="button-container">
+        <button class="gender-button" id="female-button">
+            <span>♀</span>
+            <label>أنثى</label>
+        </button>
+        <button class="gender-button" id="male-button">
+            <span>♂</span>
+            <label>ذكر</label>
+        </button>
+    </div><a href="5  222.html">
+    <button class="continue-button" id="continue-button">
+          متابعة    
+    </button></a>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let femaleButton = document.getElementById('female-button');
+            let maleButton = document.getElementById('male-button');
+            let continueButton = document.getElementById('continue-button');
+            let mainText = document.getElementById('main-text');
+
+            function selectGender(event) {
+                let selectedButton = event.target.closest('button');
+                if (selectedButton) {
+                    document.querySelectorAll('.gender-button').forEach(button => button.classList.remove('selected'));
+                    selectedButton.classList.add('selected');
+                    continueButton.classList.add('active');
+
+                    if (selectedButton === femaleButton) {
+                        mainText.textContent = 'هلا بك - عرفينا أكثر عليك';
+                        continueButton.textContent = 'هلا بالغالية، متابعة';
+                    } else if (selectedButton === maleButton) {
+                        mainText.textContent = 'هلا بك - عرفنا أكثر عليك';
+                        continueButton.textContent = 'هلا بالغالي، متابعة';
+                    }
+                }
+            }
+
+            femaleButton.addEventListener('click', selectGender);
+            maleButton.addEventListener('click', selectGender);
+
+            continueButton.addEventListener('click', function() {
+                if (continueButton.classList.contains('active')) {
+                    // Navigate to the next page or section
+                    
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعزيز الطاقة والإنتاجية</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero {
+            background-image: url(../Good/ma/aa.png);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn-primary {
+            background-color: #4ecdc4;
+            border-color: #4ecdc4;
+        }
+
+        .btn-primary:hover {
+            background-color: #45b7aa;
+            border-color: #45b7aa;
+        }
+
+        .section-title {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer {
+            background-color: white;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .footer i {
+            font-size: 1.5rem;
+            color: #4ecdc4;
+        }
+
+        .footer i:hover {
+            color: #45b7aa;
+        }
+
+        main {
+            padding-bottom: 80px;
+        }
+
+        .card-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 10px;
+            padding-right: 30px;
+        }
+
+        .card-slider .card {
+            min-width: 250px;
+            margin-right: 35px;
+            margin-top: 15px;
+            scroll-snap-align: start;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+            background-color: #fff;
+            position: relative;
+            overflow: visible;
+        }
+
+        .card-slider .badge {
+            background-color: #4ecdc4;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .card-slider .badge-free {
+            top: -10px;
+            left: 10px;
+        }
+
+        .card-slider .badge-active {
+            top: -10px;
+            right: 10px;
+            background-color: #e0f7f5;
+            color: #4ecdc4;
+        }
+
+        .progress-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 5px solid #e0f7f5;
+            border-top-color: #4ecdc4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #4ecdc4;
+            position: absolute;
+            right: 0px;
+            top: 40%;
+            transform: translateY(-50%);
+            background-color: white;
+        }
+
+        .btn-listen {
+            background-color: #4ecdc4;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            margin-top: 15px;
+            width: 100%;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .card-content {
+            padding-right: 50px;
+        }
+
+        .card-background-slider .card {
+            background-size: cover;
+            background-position: center;
+            color: white;
+            min-height: 200px;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .card-background-slider .card h5 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .card-background-slider .card p {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            margin-bottom: 0;
+            opacity: 0.8;
+        }
+
+        .card-photo-slider .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            padding-top: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            text-align: center;
+        }
+
+        .card-photo-slider img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 4px solid #4ecdc4;
+        }
+
+        .card-photo-slider .card h5 {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+            margin-top: 10px;
+        }
+        
+        .option {
+            background: rgb(9 9 9 / 0%);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s ease;
+            
+            
+        }
+
+        .option-text {
+            color: #000000;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a0a0a;
+            margin-left: 10px;
+            width: 1300;
+        }
+        
+    </style>
+</head>
+<body>
+ 
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                
+                <h1>تعزيز الطاقة والإنتاجية</h1>
+                <p class="lead">الاسترخاء 70 دقائق</p>
+                <a href="15.html"> <button class="btn btn-primary btn-lg">
+                    <i class="fas fa-play me-2"></i>استمعي الان
+                </button></a>
+            </div>
+        </section>
+
+        <section class="container mt-4">
+            
+            <div class="row">
+                <div class="col-4">
+                    <button class="btn btn-primary w-100">
+                        <i class="far fa-smile me-2"></i>كيف تشعرين
+                    </button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary w-100">
+                        <i class="fas fa-pen me-2"></i>التدوين
+                    </button>
+                </div>
+                <div class="col-4"><a href="5  222 - Copy.html">
+                    <button class="btn btn-primary w-100">
+                        <i class="far fa-clock me-2"></i>التذكيرات
+                   </button> </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mt-4">
+            
+            <div class="option">
+                <span class="option-text">المسارات</span>
+                <span class="icon">الكل</span>
+            </div>
+            <div class="card-slider">
+                <div class="card">
+                    <span class="badge badge-free">مجانا</span>
+                    <span class="badge badge-active">فعال</span>
+                    <div class="card-content">
+                        <h5>اليوم 1 من 14</h5>
+                        <p>مسار تخفيف التوتر</p>
+                    </div>
+                    <div class="progress-circle">6%</div>
+                    <button class="btn-listen">استمع الآن</button>
+                </div>
+                <div class="card">
+                    <span class="badge badge-free">مجانا</span>
+                    <span class="badge badge-active">فعال</span>
+                    <div class="card-content">
+                        <h5>اليوم 2 من 14</h5>
+                        <p>مسار الاستقرار النفسي</p>
+                    </div>
+                    <div class="progress-circle">12%</div>
+                    <button class="btn-listen">استمع الآن</button>
+                </div>
+                <div class="card">
+                    <span class="badge badge-free">مجانا</span>
+                    <span class="badge badge-active">فعال</span>
+                    <div class="card-content">
+                        <h5>اليوم 3 من 14</h5>
+                        <p>مسار وتخطي الصعاب</p>
+                    </div>
+                    <div class="progress-circle">20%</div>
+                    <button class="btn-listen">استمع الآن</button>
+                </div>
+                <div class="card">
+                    <span class="badge badge-free">مجانا</span>
+                    <span class="badge badge-active">فعال</span>
+                    <div class="card-content">
+                        <h5>اليوم 4 من 14</h5>
+                        <p>مسار الصحه النفسية</p>
+                    </div>
+                    <div class="progress-circle">20%</div>
+                    <button class="btn-listen">استمع الآن</button>
+                </div>
+                <div class="card">
+                    <span class="badge badge-free">مجانا</span>
+                    <span class="badge badge-active">فعال</span>
+                    <div class="card-content">
+                        <h5>اليوم 5 من 14</h5>
+                        <p>مسار وتحسين النوم</p>
+                    </div>
+                    <div class="progress-circle">20%</div>
+                    <button class="btn-listen">استمع الآن</button>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="container mt-4">
+            
+            <div class="option">
+                <span class="option-text">المسارات المميزة</span>
+                <span class="icon">الكل</span>
+            </div>
+            <div class="card-slider card-background-slider">
+                <a href="15.html">
+                <div class="card" style="background-image: url('ma/aa.png');">
+                    <h5>الطاقة الإيجابية</h5>
+                    <p>أعدي شحن طاقتك</p>
+                </div>
+                </a>
+                <a href="15.html">
+                <div class="card" style="background-image: url('ma/aa.png');" >
+                    
+                    <h5 >رحلة التأمل</h5>
+                    <p>تعرفي على السلام الداخلي</p>
+                </div>
+                </a>
+                <a href="15.html">
+                <div class="card" style="background-image: url('ma/aa.png');">
+                    <h5>التفكير الإيجابي</h5>
+                    <p>تعزيز التفكير الإيجابي</p>
+                </div>
+                 </a>
+                 <a href="15.html">
+                 <div class="card" style="background-image: url('ma/aa.png');">
+                     <h5>التفكير الإيجابي</h5>
+                     <p>تعزيز التفكير الإيجابي</p>
+                 </div>
+                  </a>
+                  <a href="15.html">
+                  <div class="card" style="background-image: url('ma/aa.png');">
+                      <h5>التفكير الإيجابي</h5>
+                      <p>تعزيز التفكير الإيجابي</p>
+                  </div>
+                   </a>
+            </div>
+        </section>
+
+        <section class="container mt-4">
+            
+            <div class="option">
+                <span class="option-text">الأطباء المتميزون</span>
+                <span class="icon">الكل</span>
+            </div>
+            <div class="card-slider card-photo-slider">
+                <div class="card">
+                    <img src="ma/11.jpg" alt="Doctor Image">
+                    <h5>د.سلمى المفتي</h5>
+                </div>
+                <div class="card">
+                    <img src="ma/9.jpg" alt="Doctor Image">
+                    <h5>د. ليلى الحسني</h5>
+                </div>
+                <div class="card">
+                    <img src="ma/1.jpg" alt="Doctor Image">
+                    <h5>د. نايف المطوع</h5>
+                </div>
+                <div class="card">
+                    <img src="ma/2.jpg" alt="Doctor Image">
+                    <h5>د.أماني صلاح</h5>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <i class="fas fa-home"></i>
+        <i class="far fa-heart"></i>
+        <i class="far fa-user"></i>
+        <i class="far fa-comment"></i>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

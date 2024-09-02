@@ -1,0 +1,158 @@
+<!--
+deepseek.ai Good after the first
+-->
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <title>كيف نهونها عليك اليوم؟</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #74CCCD, #aaa0ca);
+            font-family: 'Tajawal', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .title {
+            color: #FFFFFF;
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #FFFFFF;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .option {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            transition: background 0.3s ease;
+            width: 300px;
+        }
+        .option:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .option-text {
+            color: #FFFFFF;
+            font-size: 18px;
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+            background-color: #ffffff94;
+            border-radius: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            margin-left: 10px;
+        }
+        .additional-info {
+            color: #FFFFFF;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .action-button {
+            background-color: #92FE9D;
+            border-radius: 8px;
+            color: #333;
+            padding: 10px 20px;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+        .action-button:hover {
+            background-color: #72DE8D;
+        }
+        .footer-button {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            border: 0px solid grey;
+            color: #ffffff;
+            padding: 15px 140px;
+            margin-top: 5px;
+            transition: background 0.3s ease;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .footer-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">بأي لغة تفضل أن تبدأ؟</h1>
+        <p class="subtitle">.تستطيع اختيار أكثر من لغة</p>
+        
+        <div class="options">
+            <div class="option">
+                <span class="option-text">العربية</span>
+                <span class="icon"></span>
+            </div>
+            <div class="option">
+                <span class="option-text">English</span>
+                <span class="icon"></span>
+            </div>
+          
+        
+        <p class="additional-info">.بمكنك تغيير دالك بأي وقت من الاعدادات</p>
+        <a href="33.html"> <button  class="footer-button">اكتشف تولسي</button></a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let femaleButton = document.getElementById('female-button');
+            let maleButton = document.getElementById('male-button');
+            let continueButton = document.getElementById('continue-button');
+            let mainText = document.getElementById('main-text');
+
+            function selectGender(event) {
+                let selectedButton = event.target.closest('button');
+                if (selectedButton) {
+                    document.querySelectorAll('.gender-button').forEach(button => button.classList.remove('selected'));
+                    selectedButton.classList.add('selected');
+                    continueButton.classList.add('active');
+
+                    if (selectedButton === femaleButton) {
+                        mainText.textContent = '';
+                        continueButton.textContent = '';
+                    } else if (selectedButton === maleButton) {
+                        mainText.textContent = '';
+                        continueButton.textContent = '';
+                    }
+                }
+            }
+
+            femaleButton.addEventListener('click', selectGender);
+            maleButton.addEventListener('click', selectGender);
+
+            continueButton.addEventListener('click', function() {
+                if (continueButton.classList.contains('active')) {
+                    // Navigate to the next page or section
+                    alert('Continuing...');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
